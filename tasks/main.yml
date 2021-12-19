@@ -2,7 +2,7 @@
 # tasks file for ansible-role-template
   - name: Create repository directory
     file:
-      path: "{{ repository_base_path }}/repos"
+      path: "{{ repository_base_path }}"
       state: directory
       mode: "u=rw,g=wx,o=rwx"
       recurse: yes
@@ -11,7 +11,7 @@
   - name: Clone SSH repositories to single directory
     git:
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ repository_base_path }}/repos/{{ item.name }}"
+      dest: "{{ repository_base_path }}/{{ item.name }}"
       clone: yes
       update: yes
     loop: "{{ ssh_repositories }}"
@@ -24,7 +24,7 @@
   - name: Clone SSH repositories to split by project directories
     git:
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ repository_base_path }}/repos/{{ item.project }}/{{ item.name }}"
+      dest: "{{ repository_base_path }}/{{ item.project }}/{{ item.name }}"
       clone: yes
       update: yes
     loop: "{{ ssh_repositories }}"
@@ -37,7 +37,7 @@
   - name: Clone SSH repositories to split by source directories
     git:
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ repository_base_path }}/repos/{{ item.source | split('.') | first }}/{{ item.name }}"
+      dest: "{{ repository_base_path }}/{{ item.source | split('.') | first }}/{{ item.name }}"
       clone: yes
       update: yes
     loop: "{{ ssh_repositories }}"
@@ -50,7 +50,7 @@
   - name: Clone SSH repositories to split by user directories
     git:
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ repository_base_path }}/repos/{{ item.user }}/{{ item.name }}"
+      dest: "{{ repository_base_path }}/{{ item.user }}/{{ item.name }}"
       clone: yes
       update: yes
     loop: "{{ ssh_repositories }}"
