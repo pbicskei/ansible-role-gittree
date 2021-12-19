@@ -62,7 +62,7 @@
 
   - name: Ambigous settings detected.
     debug:
-      msg: You want to split all in everything, that's weird. Please correct split_by_* vars.
+      msg: You want to split all in everything, that's weird. Please correct split_by variables.
     when: 
       - split_by_project == true
       - split_by_source == true
