@@ -1,15 +1,16 @@
 ---
 # tasks file for ansible-role-template
-- name: Create repository directory
-  file:
-    path: "{{ repository_base_path }}/repos/"
-    state: directory
-    mode: "u=rw,g=wx,o=rwx"
-    recurse: yes
+  - name: Create repository directory
+    file:
+      path: "{{ repository_base_path }}/repos/"
+      state: directory
+      mode: "u=rw,g=wx,o=rwx"
+      recurse: yes
+    become: yes
 
-- name: Clone a github repository
-  git:
-    repo: git@github.com:pbicskei/ansible-role-template.git
-    dest: "{{ repository_base_path }}/repos/"
-    clone: yes
-    update: yes
+  - name: Clone a github repository
+    git:
+      repo: git@github.com:pbicskei/ansible-role-template.git
+      dest: "{{ repository_base_path }}/repos/"
+      clone: yes
+      update: yes
