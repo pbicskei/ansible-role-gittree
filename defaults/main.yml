@@ -1,3 +1,9 @@
 ---
 # defaults file for ansible-role-template
-repository_base_path: ./
+repository_base_path: ~/workdir
+
+ssh_repositories: []
+
+split_by_project: false
+split_by_source: false
+split_by_user: false
