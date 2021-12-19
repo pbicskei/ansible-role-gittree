@@ -10,5 +10,7 @@ galaxy_info:
 
   platforms: []
 
-  galaxy_tags: []
+  galaxy_tags:
+  - git_management
+  
 dependencies: []
