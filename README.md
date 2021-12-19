@@ -1,7 +1,12 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role will fill a directory with git repository content, which can be split by:
+
+- No split, all repos in {{ repository_base_path }}
+- Project: {{ repository_base_path }}/{{ project }}
+- Source: {{ repository_base_path }}/{{ source }}
+- User: {{ repository_base_path }}/{{ user }}
 
 Requirements
 ------------
@@ -23,9 +28,22 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
+```bash
     - hosts: servers
+
+      vars:
+        repository_base_path: ~/workdir
+
+        ssh_repositories:
+          - { project: evil-ansible, source: github.com, user: pbicskei, name: ansible-role-template }
+        
+        split_by_project: false
+        split_by_source: false
+        split_by_user: false
+
       roles:
-         - { role: username.rolename, x: 42 }
+         - pbicskei.git_tree
+```
 
 License
 -------
