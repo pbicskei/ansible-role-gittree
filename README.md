@@ -26,9 +26,15 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Ensure you have the role installed:
 
 ```bash
+ansible-galaxy role install pbicskei.git_tree
+```
+
+create a `play.yml`.
+
+```yaml
     - hosts: servers
 
       vars:
