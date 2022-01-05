@@ -31,7 +31,7 @@ Example Playbook
 Ensure you have the role installed:
 
 ```bash
-ansible-galaxy role install pbicskei.git_tree
+ansible-galaxy role install pbicskei.gittree
 ```
 
 create a `play.yml`.
