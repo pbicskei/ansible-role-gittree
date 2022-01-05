@@ -1,6 +1,6 @@
 ---
 # defaults file for ansible-role-template
-repository_base_path: ~/workdir
+clone_path: ~/workdspace
 
 ssh_repositories: []
 
