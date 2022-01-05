@@ -49,7 +49,7 @@ create a `play.yml`.
         split_by_user: false
 
       roles:
-         - pbicskei.git_tree
+         - pbicskei.gittree
 ```
 
 License

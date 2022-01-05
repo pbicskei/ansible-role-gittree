@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: git_tree
+  role_name: gittree
   author: Peter Bicskei
   description: Role for building a git based directory tree.
   company: no company (optional)
