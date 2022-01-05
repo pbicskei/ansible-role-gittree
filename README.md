@@ -3,10 +3,10 @@ Role Name
 
 This role will fill a directory with git repository content, which can be split by:
 
-- No split, all repos in {{ repository_base_path }}
-- Project: {{ repository_base_path }}/{{ project }}
-- Source: {{ repository_base_path }}/{{ source }}
-- User: {{ repository_base_path }}/{{ user }}
+- No split, all repos in {{ clone_path }}
+- Project: {{ clone_path }}/{{ project }}
+- Source: {{ clone_path }}/{{ source }}
+- User: {{ clone_path }}/{{ user }}
 
 Requirements
 ------------
@@ -32,7 +32,7 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: servers
 
       vars:
-        repository_base_path: ~/workdir
+        clone_path: ~/workdir
 
         ssh_repositories:
           - { project: evil-ansible, source: github.com, user: pbicskei, name: ansible-role-template version: develop }
