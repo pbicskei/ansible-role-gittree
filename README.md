@@ -1,3 +1,5 @@
+[![Release](https://github.com/pbicskei/ansible-role-gittree/actions/workflows/release.yml/badge.svg)](https://github.com/pbicskei/ansible-role-gittree/actions/workflows/release.yml)
+
 Role Name
 =========
 
