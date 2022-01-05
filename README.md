@@ -43,7 +43,7 @@ Including an example of how to use your role (for instance, with variables passe
         split_by_user: false
 
       roles:
-         - pbicskei.git_tree
+         - pbicskei.gittree
 ```
 
 License
