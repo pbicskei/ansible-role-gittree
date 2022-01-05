@@ -14,6 +14,7 @@
       dest: "{{ repository_base_path }}/{{ item.name }}"
       clone: yes
       update: yes
+      version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
     when: 
@@ -27,6 +28,7 @@
       dest: "{{ repository_base_path }}/{{ item.project }}/{{ item.name }}"
       clone: yes
       update: yes
+      version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
     when: 
@@ -40,6 +42,7 @@
       dest: "{{ repository_base_path }}/{{ item.source | split('.') | first }}/{{ item.name }}"
       clone: yes
       update: yes
+      version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
     when: 
@@ -53,6 +56,7 @@
       dest: "{{ repository_base_path }}/{{ item.user }}/{{ item.name }}"
       clone: yes
       update: yes
+      version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
     when: 

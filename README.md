@@ -35,7 +35,8 @@ Including an example of how to use your role (for instance, with variables passe
         repository_base_path: ~/workdir
 
         ssh_repositories:
-          - { project: evil-ansible, source: github.com, user: pbicskei, name: ansible-role-template }
+          - { project: evil-ansible, source: github.com, user: pbicskei, name: ansible-role-template version: develop }
+          - { project: evil-ansible, source: github.com, user: pbicskei, name: ansible-role-gittree version: main }
         
         split_by_project: false
         split_by_source: false
