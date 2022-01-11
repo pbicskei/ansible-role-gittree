@@ -4,7 +4,7 @@
     file:
       path: "{{ clone_path }}"
       state: directory
-      user: "{{ lookup('env', 'USER') }}"
+      owner: "{{ lookup('env', 'USER') }}"
       group: "{{ lookup('env', 'USER') }}"
       # recurse: yes
     become: yes
