@@ -6,7 +6,6 @@
       state: directory
       owner: "{{ lookup('env', 'USER') }}"
       group: "{{ lookup('env', 'USER') }}"
-      # recurse: yes
     become: yes
 
   - name: Clone SSH repositories to single directory
@@ -14,7 +13,6 @@
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
       dest: "{{ clone_path }}/{{ item.name }}"
       clone: yes
-      # update: yes
       version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
@@ -28,7 +26,6 @@
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
       dest: "{{ clone_path }}/{{ item.project }}/{{ item.name }}"
       clone: yes
-      # update: yes
       version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
@@ -42,7 +39,6 @@
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
       dest: "{{ clone_path }}/{{ item.source | split('.') | first }}/{{ item.name }}"
       clone: yes
-      # update: yes
       version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
@@ -56,7 +52,6 @@
       repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
       dest: "{{ clone_path }}/{{ item.user }}/{{ item.name }}"
       clone: yes
-      # update: yes
       version: "{{ item.version }}"
     loop: "{{ ssh_repositories }}"
     become: no
