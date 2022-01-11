@@ -5,7 +5,7 @@
       path: "{{ clone_path }}"
       state: directory
       mode: 0755
-      user: "{{ ansible_user_id }}"
+      user: "{{ lookup('env', 'USER') }}"
       # recurse: yes
     become: yes
 
