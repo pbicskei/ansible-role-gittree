@@ -5,7 +5,6 @@
       path: "{{ clone_path }}"
       state: directory
       owner: "{{ lookup('env', 'USER') }}"
-      group: "{{ lookup('env', 'USER') }}"
       mode: '0755'
     become: yes
 
