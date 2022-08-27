@@ -1,0 +1,53 @@
+---
+# tasks file for ansible-role-template
+  - name: Clone HTTPS repositories to single directory
+    git:
+      repo: "https://{{ item.source }}/{{ item.user }}/{{ item.name }}.git"
+      dest: "{{ clone_path }}/{{ item.name }}"
+      clone: yes
+      version: "{{ item.version }}"
+    loop: "{{ https_repositories }}"
+    become: no
+    when: 
+      - split_by_project == false
+      - split_by_source == false
+      - split_by_user == false
+
+  - name: Clone HTTPS repositories to split by project directories
+    git:
+      repo: "https://{{ item.source }}/{{ item.user }}/{{ item.name }}.git"
+      dest: "{{ clone_path }}/{{ item.project }}/{{ item.name }}"
+      clone: yes
+      version: "{{ item.version }}"
+    loop: "{{ https_repositories }}"
+    become: no
+    when: 
+      - split_by_project == true
+      - split_by_source == false
+      - split_by_user == false
+
+  - name: Clone HTTPS repositories to split by source directories
+    git:
+      repo: "https://{{ item.source }}/{{ item.user }}/{{ item.name }}.git"
+      dest: "{{ clone_path }}/{{ item.source | split('.') | first }}/{{ item.name }}"
+      clone: yes
+      version: "{{ item.version }}"
+    loop: "{{ https_repositories }}"
+    become: no
+    when: 
+      - split_by_project == false
+      - split_by_source == true
+      - split_by_user == false
+
+  - name: Clone HTTPS repositories to split by user directories
+    git:
+      repo: "https://{{ item.source }}/{{ item.user }}/{{ item.name }}.git"
+      dest: "{{ clone_path }}/{{ item.user }}/{{ item.name }}"
+      clone: yes
+      version: "{{ item.version }}"
+    loop: "{{ https_repositories }}"
+    become: no
+    when: 
+      - split_by_project == false
+      - split_by_source == false
+      - split_by_user == true
