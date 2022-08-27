@@ -1,6 +1,6 @@
 ---
 # tasks file for ansible-role-template
-  - name: Create repository directory
+  - name: Ensure clone_path exists
     file:
       path: "{{ clone_path }}"
       state: directory
