@@ -8,57 +8,11 @@
       mode: '0755'
     become: yes
 
-  - name: Clone SSH repositories to single directory
-    git:
-      repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ clone_path }}/{{ item.name }}"
-      clone: yes
-      version: "{{ item.version }}"
-    loop: "{{ ssh_repositories }}"
-    become: no
-    when: 
-      - split_by_project == false
-      - split_by_source == false
-      - split_by_user == false
+  - name: Include ssh.yml task in play
+    ansible.builtin.include: ssh.yml
 
-  - name: Clone SSH repositories to split by project directories
-    git:
-      repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ clone_path }}/{{ item.project }}/{{ item.name }}"
-      clone: yes
-      version: "{{ item.version }}"
-    loop: "{{ ssh_repositories }}"
-    become: no
-    when: 
-      - split_by_project == true
-      - split_by_source == false
-      - split_by_user == false
-
-  - name: Clone SSH repositories to split by source directories
-    git:
-      repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ clone_path }}/{{ item.source | split('.') | first }}/{{ item.name }}"
-      clone: yes
-      version: "{{ item.version }}"
-    loop: "{{ ssh_repositories }}"
-    become: no
-    when: 
-      - split_by_project == false
-      - split_by_source == true
-      - split_by_user == false
-
-  - name: Clone SSH repositories to split by user directories
-    git:
-      repo: "git@{{ item.source }}:{{ item.user }}/{{ item.name }}.git"
-      dest: "{{ clone_path }}/{{ item.user }}/{{ item.name }}"
-      clone: yes
-      version: "{{ item.version }}"
-    loop: "{{ ssh_repositories }}"
-    become: no
-    when: 
-      - split_by_project == false
-      - split_by_source == false
-      - split_by_user == true
+  - name: Include https.yml task in play
+    ansible.builtin.include: https.yml
 
   - name: Ambigous settings detected.
     debug:

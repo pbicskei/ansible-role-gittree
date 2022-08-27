@@ -3,6 +3,7 @@
 clone_path: ./clonedir
 
 ssh_repositories: []
+https_repositories: []
 
 split_by_project: false
 split_by_source: false
